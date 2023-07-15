@@ -8,6 +8,7 @@ import java.io.*;
 import java.sql.*;
 import javax.servlet.*;
 import javax.servlet.http.*;
+import model.*;
 
 /**
  *
@@ -49,20 +50,18 @@ public class Landing extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 	    try {
 		    if (conn == null) {
-			    System.out.println("Connection not found");
+			    System.out.println("...---... Connection not found");
 			    throw new SQLException();
 		    }
-		    String query = "SELECT * FROM post";
-		    Statement stmt = conn.createStatement();
-		    ResultSet rs = stmt.executeQuery(query);
-		    while (rs.next()) {
-			    System.out.println("<< " + rs.getString("POST_TITLE") + " & " + rs.getString("POST_DATE") + " & " + rs.getString("POST_TEXT") + " by " + rs.getString("ACC_UNAME"));
-			    System.out.println("------------------------");
-		    }
+
+		    ResultSet posts = Post.allPosts(conn);
+		    request.setAttribute("posts", posts);
+		    request.getRequestDispatcher("landing-page.jsp").forward(request, response);
+
 	    } catch (SQLException sqle) {
 		    response.sendError(403);
                     sqle.printStackTrace();
-		    System.out.println("============================= SQLException error");
+		    System.out.println("...---... SQLException error");
 	    }
     }
 

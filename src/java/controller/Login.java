@@ -61,13 +61,14 @@ public class Login extends HttpServlet {
 		    else {
 			    ResultSet rs = Account.login(conn, request.getParameter("uname"), request.getParameter("pass"));
 			    if (rs.next()) {
-				    System.out.println("--- Match found");
+				    System.out.println("--- Match found, login successful");
 				    System.out.println(String.format("%s\t%s", rs.getString("ACC_UNAME"), rs.getString("ACC_PASS")));
 				    HttpSession session = request.getSession();
 				    session.setAttribute("uname", rs.getString("ACC_UNAME"));
 				    response.sendRedirect("Landing");
 			    }
 			    else {
+				    System.out.println("--- Incorrect Username/Password");
 				    request.setAttribute("invalid", true);
 				    request.getRequestDispatcher("login.jsp").forward(request, response);
 			    }

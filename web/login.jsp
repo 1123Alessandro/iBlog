@@ -23,7 +23,7 @@
 	<form action="Login" method="POST">
 		<input type="hidden" name="login" value="true">
 		<input type="text" name="uname">
-		<input type="text" name="pass">
+		<input type="password" name="pass">
 		<button type='submit'>Submit</button>
 	</form>
     </body>

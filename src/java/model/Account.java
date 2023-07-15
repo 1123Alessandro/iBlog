@@ -7,8 +7,9 @@ package model;
 import java.io.*;
 import java.sql.*;
 import java.util.*;
+
 public class Account {
-    
+        
 	public static ResultSet login(Connection conn, String uname, String pass) throws SQLException {
 		String query = "Select * FROM account WHERE ACC_UNAME = ? AND ACC_PASS = ?";
 		PreparedStatement ps = conn.prepareStatement(query);

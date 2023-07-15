@@ -5,6 +5,8 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="java.sql.*" %>
+<%@page import="model.*" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -13,7 +15,7 @@
 	</head>
 	<body>
 		<%
-		String uname = (String) session.getAttribute("ACC_UNAME");
+		String uname = (String) session.getAttribute("uname");
 		if (uname == null) {
 		%>
 		<h1>Welcome Guest</h1>
@@ -25,6 +27,21 @@
 		else {
 		%>
 		<h1>Trending Now</h1>
+		<form action="" method="POST">
+			<button type="submit">Write Post</button>
+		</form>
+
+		<%
+		ResultSet posts = (ResultSet) request.getAttribute("posts");
+		while (posts.next()) {
+		%>
+
+		<h3><%= posts.getString("POST_TITLE") %></h3>
+		<p><%= posts.getDate("POST_DATE") %></p>
+
+		<%
+		}
+		%>
 		<%
 		}
 		%>
