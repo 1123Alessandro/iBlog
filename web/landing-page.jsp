@@ -7,14 +7,26 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-    </head>
-    <body>
-        <h1>Hello World!</h1>
-	<form action="Landing" method="GET">
-		<button type="submit">Click here</button>
-	</form>
-    </body>
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		<title>JSP Page</title>
+	</head>
+	<body>
+		<%
+		String uname = (String) session.getAttribute("ACC_UNAME");
+		if (uname == null) {
+		%>
+		<h1>Welcome Guest</h1>
+		<form action="Login" method="GET">
+			<button type="submit">Login</button>
+		</form>
+		<%
+		}
+		else {
+		%>
+		<h1>Trending Now</h1>
+		<%
+		}
+		%>
+	</body>
 </html>
