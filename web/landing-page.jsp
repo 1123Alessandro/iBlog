@@ -14,20 +14,23 @@
 		<title>JSP Page</title>
 	</head>
 	<body>
-		<%
-		String uname = (String) session.getAttribute("uname");
-		if (uname == null) {
-		%>
-		<h1>Welcome Guest</h1>
-		<form action="Login" method="GET">
-			<button type="submit">Login</button>
-		</form>
-		<%
-		}
-		else {
-		%>
-		<h1>Trending Now</h1>
-		<form action="" method="POST">
+        <%
+        String uname = (String) session.getAttribute("uname");
+        if (uname == null) {
+        %>
+        <h1>Welcome Guest</h1>
+        <form action="Login" method="GET">
+            <button type="submit">Login</button>
+        </form>
+        <%
+        }
+        else {
+        %>
+        <!-- TODO: Make navbar -->
+
+        <h1>Trending Now</h1>
+        <!-- <a href="Landing?query=mine">My Posts</a> | <a href="Landing?query=comms">My Comments</a> -->
+		<form action="Publish" method="POST">
 			<button type="submit">Write Post</button>
 		</form>
 

@@ -14,7 +14,7 @@ import model.*;
  *
  * @author araza
  */
-public class Landing extends HttpServlet {
+public class Publish extends HttpServlet {
 
     Connection conn;
     
@@ -48,21 +48,22 @@ public class Landing extends HttpServlet {
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    try {
-		    if (conn == null) {
-			    System.out.println("...---... Connection not found");
+      try {
+        String url = request.getParameter("draft");
+		    if (url == null) {
+			    System.out.println("...---... No url control found; redirecting to draft.jsp");
+			    request.getRequestDispatcher("draft.jsp").forward(request, response);
+		    }
+		    else if (conn == null) {
+			    System.out.println("...---... conn null at Publish.java;");
 			    throw new SQLException();
 		    }
-
-		    // System.out.println(String.format(".. %s", request.getParameter("quad")));
-		    ResultSet posts = Post.allPosts(conn);
-		    request.setAttribute("posts", posts);
-		    request.getRequestDispatcher("landing-page.jsp").forward(request, response);
-
-	    } catch (SQLException sqle) {
-		    response.sendError(403);
-                    sqle.printStackTrace();
-		    System.out.println("...---... SQLException error");
+		    else {
+			    System.out.println("CREATE NEW POST ENTITY");
+		    }
+	    } catch (Exception sqle) {
+		    sqle.printStackTrace();
+		    response.sendError(500);
 	    }
     }
 

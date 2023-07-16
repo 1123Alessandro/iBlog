@@ -48,35 +48,35 @@ public class Login extends HttpServlet {
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	    try {
-		    String mvc = request.getParameter("login");
-		    if (mvc == null) {
-			    System.out.println("...---... No mvc control found; redirecting to login.jsp");
-			    request.getRequestDispatcher("login.jsp").forward(request, response);
-		    }
-		    else if (conn == null) {
-			    System.out.println("...---... conn null at Login.java");
-			    throw new SQLException();
-		    }
-		    else {
-			    ResultSet rs = Account.login(conn, request.getParameter("uname"), request.getParameter("pass"));
-			    if (rs.next()) {
-				    System.out.println("--- Match found, login successful");
-				    System.out.println(String.format("%s\t%s", rs.getString("ACC_UNAME"), rs.getString("ACC_PASS")));
-				    HttpSession session = request.getSession();
-				    session.setAttribute("uname", rs.getString("ACC_UNAME"));
-				    response.sendRedirect("Landing");
-			    }
-			    else {
-				    System.out.println("--- Incorrect Username/Password");
-				    request.setAttribute("invalid", true);
-				    request.getRequestDispatcher("login.jsp").forward(request, response);
-			    }
-		    }
-	    } catch (SQLException sqle) {
-		    sqle.printStackTrace();
-		    response.sendError(403);
-	    }
+        try {
+            String url = request.getParameter("login");
+            if (url == null) {
+                System.out.println("...---... No url control found; redirecting to login.jsp");
+                request.getRequestDispatcher("login.jsp").forward(request, response);
+            }
+            else if (conn == null) {
+                System.out.println("...---... conn null at Login.java");
+                throw new SQLException();
+            }
+            else {
+                ResultSet rs = Account.login(conn, request.getParameter("uname"), request.getParameter("pass"));
+                if (rs.next()) {
+                    System.out.println("--- Match found, login successful");
+                    System.out.println(String.format("%s\t%s", rs.getString("ACC_UNAME"), rs.getString("ACC_PASS")));
+                    HttpSession session = request.getSession();
+                    session.setAttribute("uname", rs.getString("ACC_UNAME"));
+                    response.sendRedirect("Landing") ;
+                }
+                else {
+                    System.out.println("--- Incorrect Username/Password");
+                    request.setAttribute("invalid", true);
+                    request.getRequestDispatcher("login.jsp").forward(request, response);
+                }
+            }
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+            response.sendError(403);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

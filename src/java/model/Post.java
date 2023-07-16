@@ -15,4 +15,7 @@ public class Post {
 		ResultSet rs = stmt.executeQuery("SELECT * FROM post ORDER BY POST_DATE DESC");
 		return rs;
 	}
+
+	public static void publishPost(Connection conn, String title, String text, String uname) {
+	}
 }

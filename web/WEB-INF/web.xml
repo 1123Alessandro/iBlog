@@ -36,6 +36,10 @@
         <servlet-name>Login</servlet-name>
         <servlet-class>controller.Login</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Publish</servlet-name>
+        <servlet-class>controller.Publish</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Landing</servlet-name>
         <url-pattern>/Landing</url-pattern>
@@ -43,6 +47,10 @@
     <servlet-mapping>
         <servlet-name>Login</servlet-name>
         <url-pattern>/Login</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Publish</servlet-name>
+        <url-pattern>/Publish</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
