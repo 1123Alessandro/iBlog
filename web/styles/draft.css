@@ -1,0 +1,42 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Jul 17, 2023, 3:34:21 AM
+    Author     : araza
+*/
+
+.title {
+    width: 100%;
+    font-size: 5em;
+    text-align: center;
+    /* color: red; */
+    /* color: green; */
+    border: 0;
+    /* border-bottom: 0.5vh solid black; */
+}
+
+.title:focus {
+    outline: none;
+}
+
+.espan {
+    margin-top: 1em;
+    /* background-color: black; */
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    height: 50vh;
+}
+
+.essay {
+    width: 95%;
+    height: 80%;
+    /* background-color: green; */
+}
+
+.sub {
+    margin-top: 2em;
+}

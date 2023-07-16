@@ -16,6 +16,12 @@ public class Post {
 		return rs;
 	}
 
-	public static void publishPost(Connection conn, String title, String text, String uname) {
+	public static void publishPost(Connection conn, String title, String text, String uname) throws SQLException {
+        String query = "INSERT INTO post (POST_TITLE, POST_DATE, POST_TEXT, ACC_UNAME) VALUES (?, NOW(), ?, ?)";
+        PreparedStatement ps = conn.prepareStatement(query);
+        ps.setString(1, title);
+        ps.setString(2, text);
+        ps.setString(3, uname);
+        ps.executeUpdate();
 	}
 }

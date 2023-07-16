@@ -59,9 +59,17 @@ public class Publish extends HttpServlet {
 			    throw new SQLException();
 		    }
 		    else {
-			    System.out.println("CREATE NEW POST ENTITY");
+			    // System.out.println("CREATE NEW POST ENTITY");
+                String title = request.getParameter("title");
+                String text = request.getParameter("text");
+                String uname = (String) request.getSession().getAttribute("uname");
+                // System.out.println("Blog title :: " + title);
+                // System.out.println("Blog text :: \n" + text);
+                // System.out.println("Username :: " + uname);
+                Post.publishPost(conn, title, text, uname);
+                response.sendRedirect("Landing");
 		    }
-	    } catch (Exception sqle) {
+	    } catch (SQLException sqle) {
 		    sqle.printStackTrace();
 		    response.sendError(500);
 	    }
