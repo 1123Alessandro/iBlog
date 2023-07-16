@@ -12,6 +12,7 @@
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 		<title>JSP Page</title>
+        <link rel="stylesheet" href="styles/landing.css">
 	</head>
 	<body>
         <%
@@ -37,15 +38,22 @@
 		<%
 		ResultSet posts = (ResultSet) request.getAttribute("posts");
 		while (posts.next()) {
+            String text = posts.getString("POST_TEXT");
 		%>
 
-		<h3><%= posts.getString("POST_TITLE") %></h3>
-		<p><%= posts.getDate("POST_DATE") %></p>
+        <div class="postbox">
+            <h2>
+                <a href="#">
+                    <%= posts.getString("POST_TITLE") %>
+                </a>
+            </h2>
+            <a href="#"><%= posts.getString("ACC_UNAME") %></a>
+            <p><%= posts.getDate("POST_DATE") %></p>
+            <p><%= text.substring(0, (text.length() < 20) ? text.length()-1 : 20) + "..." %></p>
+        </div>
 
 		<%
-		}
-		%>
-		<%
+        }
 		}
 		%>
 	</body>

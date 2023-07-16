@@ -34,6 +34,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 .essay {
     width: 95%;
     height: 80%;
+    white-space: pre-wrap;
     /* background-color: green; */
 }
 
