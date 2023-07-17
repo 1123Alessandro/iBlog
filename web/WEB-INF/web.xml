@@ -40,6 +40,10 @@
         <servlet-name>Publish</servlet-name>
         <servlet-class>controller.Publish</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>View</servlet-name>
+        <servlet-class>controller.View</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Landing</servlet-name>
         <url-pattern>/Landing</url-pattern>
@@ -51,6 +55,10 @@
     <servlet-mapping>
         <servlet-name>Publish</servlet-name>
         <url-pattern>/Publish</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>View</servlet-name>
+        <url-pattern>/View</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

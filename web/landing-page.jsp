@@ -43,7 +43,7 @@
 
         <div class="postbox">
             <h2>
-                <a href="#">
+                <a href="View?id=<%= posts.getString("POST_ID") %>">
                     <%= posts.getString("POST_TITLE") %>
                 </a>
             </h2>

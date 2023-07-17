@@ -24,4 +24,12 @@ public class Post {
         ps.setString(3, uname);
         ps.executeUpdate();
 	}
+
+    public static ResultSet getPost(Connection conn, int id) throws SQLException {
+        String query = "SELECT * FROM post WHERE POST_ID = ?";
+        PreparedStatement ps = conn.prepareStatement(query);
+        ps.setInt(1, id);
+        ResultSet rs = ps.executeQuery();
+        return rs;
+    }
 }

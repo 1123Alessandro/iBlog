@@ -14,7 +14,7 @@ import model.*;
  *
  * @author araza
  */
-public class Publish extends HttpServlet {
+public class View extends HttpServlet {
 
     Connection conn;
     
@@ -48,32 +48,26 @@ public class Publish extends HttpServlet {
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      try {
-        String url = request.getParameter("draft");
-		    if (url == null) {
-			    System.out.println("...---... No url control found; redirecting to draft.jsp");
-			    request.getRequestDispatcher("draft.jsp").forward(request, response);
-		    }
-		    else if (conn == null) {
-			    System.out.println("...---... conn null at Publish.java;");
-			    throw new SQLException();
-		    }
-		    else {
-			    // System.out.println("CREATE NEW POST ENTITY");
-                String title = request.getParameter("title");
-                String text = request.getParameter("text");
-                String uname = (String) request.getSession().getAttribute("uname");
-                // System.out.println("Blog title :: " + title);
-                // System.out.println("Blog text :: \n" + text);
-                // System.out.println("Username :: " + uname);
-                Post.publishPost(conn, title, text, uname);
-                System.out.println("^-^ post added to database");
-                response.sendRedirect("Landing");
-		    }
-	    } catch (SQLException sqle) {
-		    sqle.printStackTrace();
-		    response.sendError(500);
-	    }
+        try {
+            String id = request.getParameter("id");
+
+            if (id == null)
+                throw new SQLException();
+
+            Integer postID = new Integer(id);
+            ResultSet post = Post.getPost(conn, postID);
+            if (post.next()) {
+                request.setAttribute("post", post);
+                request.getRequestDispatcher("post.jsp").forward(request, response);
+            }
+            else {
+                System.out.println("...---... NO MATCHING RESULTS");
+                response.sendError(404);
+            }
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+            response.sendError(500);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
