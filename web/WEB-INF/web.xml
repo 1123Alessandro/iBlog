@@ -48,6 +48,10 @@
         <servlet-name>Profile</servlet-name>
         <servlet-class>controller.Profile</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Critique</servlet-name>
+        <servlet-class>controller.Critique</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Landing</servlet-name>
         <url-pattern>/Landing</url-pattern>
@@ -67,6 +71,10 @@
     <servlet-mapping>
         <servlet-name>Profile</servlet-name>
         <url-pattern>/Profile</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Critique</servlet-name>
+        <url-pattern>/Critique</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

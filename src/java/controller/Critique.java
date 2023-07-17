@@ -14,7 +14,7 @@ import model.*;
  *
  * @author araza
  */
-public class View extends HttpServlet {
+public class Critique extends HttpServlet {
 
     Connection conn;
     
@@ -49,23 +49,12 @@ public class View extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            String id = request.getParameter("id");
-
-            if (id == null)
-                throw new SQLException();
-
-            Integer postID = new Integer(id);
-            ResultSet post = Post.getPost(conn, postID);
-            if (post.next()) {
-                request.setAttribute("post", post);
-                request.setAttribute("comments", Comment.allComments(conn, postID));
-                request.setAttribute("commentCount", Comment.commentCount(conn, postID));
-                request.getRequestDispatcher("post.jsp").forward(request, response);
-            }
-            else {
-                System.out.println("...---... NO MATCHING RESULTS");
-                response.sendError(404);
-            }
+            String text = request.getParameter("text");
+            Integer postID = new Integer(request.getParameter("postid"));
+            String uname = (String) request.getSession().getAttribute("uname");
+            Comment.publishComment(conn, text, postID, uname);
+            System.out.println("^-^ comment added to post");
+            response.sendRedirect("View?id=" + postID);
         } catch (SQLException sqle) {
             sqle.printStackTrace();
             response.sendError(500);
