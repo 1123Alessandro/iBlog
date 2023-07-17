@@ -44,6 +44,10 @@
         <servlet-name>View</servlet-name>
         <servlet-class>controller.View</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>Profile</servlet-name>
+        <servlet-class>controller.Profile</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Landing</servlet-name>
         <url-pattern>/Landing</url-pattern>
@@ -59,6 +63,10 @@
     <servlet-mapping>
         <servlet-name>View</servlet-name>
         <url-pattern>/View</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>Profile</servlet-name>
+        <url-pattern>/Profile</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

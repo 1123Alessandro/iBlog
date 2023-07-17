@@ -16,9 +16,9 @@
         <h1>Draft!</h1>
         <form action="Publish" method="POST">
             <input type="hidden" name="draft" value="true">
-            <input class="title" type="text" name="title" placeholder="Blog Title">
+            <input class="title" type="text" name="title" placeholder="Blog Title" value="Testing">
             <div class="espan">
-                <textarea name="text" class="essay"></textarea>
+                <textarea name="text" class="essay">Testing</textarea>
                 <button type="submit" class="sub" >Post</button>
             </div>
         </form>

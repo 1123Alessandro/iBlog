@@ -14,7 +14,7 @@ import model.*;
  *
  * @author araza
  */
-public class Login extends HttpServlet {
+public class Profile extends HttpServlet {
 
     Connection conn;
     
@@ -49,33 +49,25 @@ public class Login extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            String url = request.getParameter("login");
-            if (url == null) {
-                System.out.println("...---... No url control found; redirecting to login.jsp");
-                request.getRequestDispatcher("login.jsp").forward(request, response);
-            }
-            else if (conn == null) {
-                System.out.println("...---... conn null at Login.java");
+            String uname = request.getParameter("uname");
+
+            if (uname == null)
                 throw new SQLException();
+
+            ResultSet rs = Account.accountInfo(conn, uname);
+            if (rs.next()) {
+                request.setAttribute("info", rs);
+                request.setAttribute("posts", Post.getAccPosts(conn, uname));
+                request.getRequestDispatcher("account.jsp").forward(request, response);
             }
             else {
-                ResultSet rs = Account.login(conn, request.getParameter("uname"), request.getParameter("pass"));
-                if (rs.next()) {
-                    System.out.println("^-^ Match found, login successful");
-                    System.out.println(String.format("%s\t%s", rs.getString("ACC_UNAME"), rs.getString("ACC_PASS")));
-                    HttpSession session = request.getSession();
-                    session.setAttribute("uname", rs.getString("ACC_UNAME"));
-                    response.sendRedirect("Landing") ;
-                }
-                else {
-                    System.out.println("-_- Incorrect Username/Password");
-                    request.setAttribute("invalid", true);
-                    request.getRequestDispatcher("login.jsp").forward(request, response);
-                }
+                System.out.println("...---... NO MATCHING RESULTS");
+                response.sendError(404);
             }
+
         } catch (SQLException sqle) {
             sqle.printStackTrace();
-            response.sendError(403);
+            response.sendError(500);
         }
     }
 

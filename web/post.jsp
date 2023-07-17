@@ -20,7 +20,7 @@
         <h1><%= rs.getString("POST_TITLE") %></h1>
         <div>
             <h4>
-                <a href="#">
+                <a href="Profile?uname=<%= rs.getString("ACC_UNAME") %>">
                     <%= rs.getString("ACC_UNAME") %>
                 </a>
             </h4>

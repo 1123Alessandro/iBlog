@@ -47,9 +47,9 @@
                     <%= posts.getString("POST_TITLE") %>
                 </a>
             </h2>
-            <a href="#"><%= posts.getString("ACC_UNAME") %></a>
+            <a href="Profile?uname=<%= posts.getString("ACC_UNAME") %>"><%= posts.getString("ACC_UNAME") %></a>
             <p><%= posts.getDate("POST_DATE") %></p>
-            <p><%= text.substring(0, (text.length() < 20) ? text.length()-1 : 20) + "..." %></p>
+            <p><%= text.substring(0, (text.length() < 30) ? text.length()-1 : 30) + "..." %></p>
         </div>
 
 		<%

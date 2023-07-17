@@ -32,4 +32,11 @@ public class Post {
         ResultSet rs = ps.executeQuery();
         return rs;
     }
+
+    public static ResultSet getAccPosts(Connection conn, String uname) throws SQLException {
+        String query = "SELECT * FROM post WHERE ACC_UNAME = ? ORDER BY POST_DATE DESC";
+        PreparedStatement ps = conn.prepareStatement(query);
+        ps.setString(1, uname);
+        return ps.executeQuery();
+    }
 }

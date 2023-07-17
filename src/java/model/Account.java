@@ -11,10 +11,17 @@ import java.util.*;
 public class Account {
         
 	public static ResultSet login(Connection conn, String uname, String pass) throws SQLException {
-		String query = "Select * FROM account WHERE ACC_UNAME = ? AND ACC_PASS = ?";
+		String query = "SELECT * FROM account WHERE ACC_UNAME = ? AND ACC_PASS = ?";
 		PreparedStatement ps = conn.prepareStatement(query);
 		ps.setString(1, uname);
 		ps.setString(2, pass);
 		return ps.executeQuery();
 	}
+
+    public static ResultSet accountInfo(Connection conn, String uname) throws SQLException {
+        String query = "SELECT * FROM account WHERE ACC_UNAME = ?";
+        PreparedStatement ps = conn.prepareStatement(query);
+        ps.setString(1, uname);
+        return ps.executeQuery();
+    }
 }
