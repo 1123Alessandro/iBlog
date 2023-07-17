@@ -29,6 +29,14 @@
             <h4>
                 <%= rs.getString("POST_DATE") %>
             </h4>
+            <%
+            if (rs.getString("ACC_UNAME").equals(request.getSession().getAttribute("uname"))) {
+            %>
+            <a href="Edit?id=<%= rs.getString("POST_ID") %>">Edit Post</a>
+            <a href="Delete?id=<%= rs.getString("POST_ID") %>">Delete Post</a>
+            <%
+            }
+            %>
         </div>
 
         <p>

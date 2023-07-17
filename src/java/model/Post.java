@@ -39,4 +39,23 @@ public class Post {
         ps.setString(1, uname);
         return ps.executeQuery();
     }
+
+    public static boolean ownsPost(Connection conn, String uname, int id) throws SQLException {
+        String query = "SELECT * FROM post WHERE ACC_UNAME = ? AND POST_ID = ?";
+        PreparedStatement ps = conn.prepareStatement(query);
+        ps.setString(1, uname);
+        ps.setInt(2, id);
+        ResultSet rs = ps.executeQuery();
+        if (rs.next()) return true;
+        else return false;
+    }
+
+    public static void editPost(Connection conn, int id, String title, String text) throws SQLException {
+        String query = "UPDATE post SET POST_TITLE = ?, POST_DATE = NOW(), POST_TEXT = ? WHERE POST_ID = ?";
+        PreparedStatement ps = conn.prepareStatement(query);
+        ps.setString(1, title);
+        ps.setString(2, text);
+        ps.setInt(3, id);
+        ps.executeUpdate();
+    }
 }

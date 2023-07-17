@@ -14,7 +14,7 @@ import model.*;
  *
  * @author araza
  */
-public class Publish extends HttpServlet {
+public class Edit extends HttpServlet {
 
     Connection conn;
     
@@ -48,45 +48,27 @@ public class Publish extends HttpServlet {
     }
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-      try {
-        String url = request.getParameter("draft");
-		    if (url == null) {
-			    System.out.println("...---... No url control found; redirecting to draft.jsp");
-			    request.getRequestDispatcher("draft.jsp").forward(request, response);
-		    }
-		    else if (conn == null) {
-			    System.out.println("...---... conn null at Publish.java;");
-			    throw new SQLException();
-		    }
-		    else {
-			    // System.out.println("CREATE NEW POST ENTITY");
-                String title = request.getParameter("title");
-                String text = request.getParameter("text");
-                String uname = (String) request.getSession().getAttribute("uname");
-                String edit = request.getParameter("editPost");
-                // System.out.println("Blog title :: " + title);
-                // System.out.println("Blog text :: \n" + text);
-                // System.out.println("Username :: " + uname);
+        try {
+            String id = request.getParameter("id");
+            if (id == null) 
+                throw new SQLException();
 
-                // yes it is
-                // System.out.println("Check if null :: " + request.getAttribute("editPost"));
-
-                if (edit == null) {
-                    Post.publishPost(conn, title, text, uname);
-                    System.out.println("^-^ post added to database");
-                    response.sendRedirect("Landing");
-                }
-                else {
-                    // TODO: edit record
-                    Post.editPost(conn, new Integer(request.getParameter("postid")), title, text);
-                    System.out.println("^-^ post edited in database");
-                    response.sendRedirect("Landing");
-                }
-		    }
-	    } catch (SQLException sqle) {
-		    sqle.printStackTrace();
-		    response.sendError(500);
-	    }
+            Integer postID = new Integer(id);
+            if (Post.ownsPost(conn, (String) request.getSession().getAttribute("uname"), postID)) {
+                ResultSet details = Post.getPost(conn, postID);
+                details.next();
+                request.setAttribute("editPost", true);
+                request.setAttribute("details", details);
+                request.getRequestDispatcher("draft.jsp").forward(request, response);
+            }
+            else {
+                System.out.println("...---... post not owned by client or post does not exist");
+                response.sendError(403);
+            }
+        } catch (SQLException sqle) {
+            sqle.printStackTrace();
+            response.sendError(500);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
