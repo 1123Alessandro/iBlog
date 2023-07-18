@@ -37,6 +37,18 @@
             <%
             }
             %>
+
+            <div>
+                <%
+                Boolean upvoted = (Boolean) request.getAttribute("upvoted");
+                Integer count = (Integer) request.getAttribute("voteCount");
+                %>
+                <form action="Up">
+                    <input type="hidden" name="postid" value="<%= rs.getString("POST_ID") %>">
+                    <button type="submit"><%= (upvoted) ? "Already Upvoted" : "Upvote" %></button>
+                </form>
+                <p><%= count %> Upvotes</p>
+            </div>
         </div>
 
         <p>
@@ -44,8 +56,8 @@
         </p>
 
         <div>
-            <h3>Comments</h3>
-            <p><%= request.getAttribute("commentCount") %></p>
+            <h3><%= request.getAttribute("commentCount") %> Comments</h3>
+            <!-- <p><%= request.getAttribute("commentCount") %></p> -->
         </div>
         <form action="Critique" method="POST">
             <input type="hidden" name="postid" value="<%= rs.getString("POST_ID") %>">

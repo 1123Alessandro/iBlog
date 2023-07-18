@@ -14,7 +14,7 @@ import model.*;
  *
  * @author araza
  */
-public class View extends HttpServlet {
+public class Up extends HttpServlet {
 
     Connection conn;
     
@@ -49,27 +49,15 @@ public class View extends HttpServlet {
 
     protected void processRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         try {
-            String id = request.getParameter("id");
+            String id = request.getParameter("postid");
 
             if (id == null)
                 throw new SQLException();
 
             Integer postID = new Integer(id);
-            ResultSet post = Post.getPost(conn, postID);
             String uname = (String) request.getSession().getAttribute("uname");
-            if (post.next()) {
-                request.setAttribute("post", post);
-                request.setAttribute("comments", Comment.allComments(conn, postID));
-                request.setAttribute("commentCount", Comment.commentCount(conn, postID));
-                // TODO: include vote stats
-                request.setAttribute("upvoted", Vote.postUp(conn, postID, uname));
-                request.setAttribute("voteCount", Vote.upVoteCount(conn, postID));
-                request.getRequestDispatcher("post.jsp").forward(request, response);
-            }
-            else {
-                System.out.println("...---... NO MATCHING RESULTS");
-                response.sendError(404);
-            }
+            Vote.toggleUpVote(conn, postID, uname);
+            response.sendRedirect("View?id=" + postID);
         } catch (SQLException sqle) {
             sqle.printStackTrace();
             response.sendError(500);
