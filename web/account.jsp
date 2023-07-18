@@ -18,6 +18,12 @@
         <title><%= acc.getString("ACC_UNAME") %></title>
     </head>
     <body>
+
+        <div class="navbar">
+            <a href="Landing">Home</a>
+            <a href="Profile?uname=<%= request.getSession().getAttribute("uname") %>">My Profile</a>
+        </div>
+
         <h1><%= acc.getString("ACC_UNAME") %></h1>
         <%
         if (posts.next()) {

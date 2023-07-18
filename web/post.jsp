@@ -18,6 +18,12 @@
     </head>
     <body>
 
+        <div class="navbar">
+            <a href="Landing">Home</a>
+            <a href="Profile?uname=<%= request.getSession().getAttribute("uname") %>">My Profile</a>
+        </div>
+
+
         <h1><%= rs.getString("POST_TITLE") %></h1>
 
         <div>
@@ -67,11 +73,24 @@
         <%
         ResultSet comments = (ResultSet) request.getAttribute("comments");
         while (comments.next()) {
+        String commenter = comments.getString("ACC_UNAME");
         %>
         <div>
-            <h4><%= comments.getString("ACC_UNAME") %></h4>
+            <h4><%= commenter %></h4>
             <p><%= comments.getDate("COM_DATE") %></p>
             <p><%= comments.getString("COM_TEXT").replace("\n", "<br>") %></p>
+            <%
+            if (commenter.equals(request.getSession().getAttribute("uname"))) {
+            %>
+            <form action="DeleteComment" method="POST">
+                <input type="hidden" name="id" value="<%= comments.getString("COM_ID") %>">
+                <input type="hidden" name="postid" value="<%= comments.getString("POST_ID") %>">
+                <button type="submit">Delete Comment</button>
+            </form>
+            <!-- <a href="DeleteComment?id=<%= comments.getString("COM_ID") %>">Delete Comment</a> -->
+            <%
+            }
+            %>
         </div>
         <%
         }

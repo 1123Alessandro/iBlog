@@ -20,6 +20,12 @@
         <link rel="stylesheet" href="styles/draft.css">
     </head>
     <body>
+
+        <div class="navbar">
+            <a href="Landing">Home</a>
+            <a href="Profile?uname=<%= request.getSession().getAttribute("uname") %>">My Profile</a>
+        </div>
+
         <h1>Drafting</h1>
         <form action="Publish" method="POST">
             <input type="hidden" name="draft" value="true">

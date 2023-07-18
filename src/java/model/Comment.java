@@ -34,4 +34,11 @@ public class Comment {
         rs.next();
         return rs.getInt("total");
     }
+
+    public static void deleteComment(Connection conn, int id) throws SQLException {
+        String query = "DELETE FROM comment WHERE COM_ID = ?";
+        PreparedStatement ps = conn.prepareStatement(query);
+        ps.setInt(1, id);
+        ps.executeUpdate();
+    }
 }

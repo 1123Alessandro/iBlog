@@ -29,6 +29,12 @@
         %>
         <!-- TODO: Make navbar -->
 
+        <div class="navbar">
+            <a href="Landing">Home</a>
+            <a href="Profile?uname=<%= request.getSession().getAttribute("uname") %>">My Profile</a>
+        </div>
+
+
         <h1>Trending Now</h1>
         <!-- <a href="Landing?query=mine">My Posts</a> | <a href="Landing?query=comms">My Comments</a> -->
 		<form action="Publish" method="POST">

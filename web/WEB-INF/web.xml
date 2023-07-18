@@ -64,6 +64,10 @@
         <servlet-name>Up</servlet-name>
         <servlet-class>controller.Up</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>DeleteComment</servlet-name>
+        <servlet-class>controller.DeleteComment</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>Landing</servlet-name>
         <url-pattern>/Landing</url-pattern>
@@ -99,6 +103,10 @@
     <servlet-mapping>
         <servlet-name>Up</servlet-name>
         <url-pattern>/Up</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteComment</servlet-name>
+        <url-pattern>/DeleteComment</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
