@@ -58,4 +58,11 @@ public class Post {
         ps.setInt(3, id);
         ps.executeUpdate();
     }
+
+    public static void deletePost(Connection conn, int id) throws SQLException {
+        String query = "DELETE FROM post WHERE POST_ID = ?";
+        PreparedStatement ps = conn.prepareStatement(query);
+        ps.setInt(1, id);
+        ps.executeUpdate();
+    }
 }
