@@ -22,8 +22,8 @@
     <body>
 
         <div class="navbar">
-            <a href="Landing">Home</a>
-            <a href="Profile?uname=<%= request.getSession().getAttribute("uname") %>">My Profile</a>
+            <a id="home" href="Landing">Home</a>
+            <a id="profile" href="Profile?uname=<%= request.getSession().getAttribute("uname") %>">My Profile</a>
         </div>
 
         <h1>Drafting</h1>

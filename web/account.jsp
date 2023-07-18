@@ -16,15 +16,16 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title><%= acc.getString("ACC_UNAME") %></title>
+        <link rel="stylesheet" href="styles/acc.css">
     </head>
     <body>
 
         <div class="navbar">
-            <a href="Landing">Home</a>
-            <a href="Profile?uname=<%= request.getSession().getAttribute("uname") %>">My Profile</a>
+            <a id="home" href="Landing">Home</a>
+            <a id="profile" href="Profile?uname=<%= request.getSession().getAttribute("uname") %>">My Profile</a>
         </div>
 
-        <h1><%= acc.getString("ACC_UNAME") %></h1>
+        <h1 class="username"><%= acc.getString("ACC_UNAME") %></h1>
         <%
         if (posts.next()) {
         do {

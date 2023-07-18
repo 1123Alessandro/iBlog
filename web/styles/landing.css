@@ -7,3 +7,60 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     Author     : araza
 */
 
+.navbar {
+    /* background-color: black; */
+    height: 10vh;
+    display: flex;
+    align-items: center;
+    /* justify-content: space-evenly; */
+    color: #191922;
+}
+
+.navbar a, .navbar a:visited {
+    text-decoration: none;
+    color: inherit;
+} 
+
+.navbar #home {
+    margin-left: 2vw;
+    margin-right: auto;
+}
+
+.navbar #profile {
+    margin-left: auto;
+    margin-right: 2vw;
+}
+
+.title {
+    text-align: center;
+    font-size: 3em;
+    margin: auto;
+}
+
+.tabs {
+    display: flex;
+}
+
+.tabs form {
+    margin: auto;
+}
+
+.postbox {
+    border: 5px solid black;
+    border-radius: 20px;
+    margin: 1rem;
+    padding: 0.5rem 1rem;
+}
+
+.postbox a {
+    color: #d8616b;
+}
+
+.postbox a:visited {
+    color: #d8616b;
+}
+
+.postbox h2 {
+    margin: 1em 0 0 0;
+}
+

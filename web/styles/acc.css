@@ -3,7 +3,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to c
 Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css to edit this template
 */
 /* 
-    Created on : Jul 17, 2023, 3:34:21 AM
+    Created on : Jul 18, 2023, 8:49:02 PM
     Author     : araza
 */
 
@@ -31,38 +31,28 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     margin-right: 2vw;
 }
 
-.title {
-    width: 100%;
-    font-size: 5em;
+.username {
+    margin: 0;
     text-align: center;
-    /* color: red; */
-    /* color: green; */
-    border: 0;
-    /* border-bottom: 0.5vh solid black; */
+    font-size: 4em;
 }
 
-.title:focus {
-    outline: none;
+.postbox {
+    border: 5px solid black;
+    border-radius: 20px;
+    margin: 1rem;
+    padding: 0.5rem 1rem;
 }
 
-.espan {
-    margin-top: 1em;
-    /* background-color: black; */
-    display: flex;
-    flex-direction: column;
-    /* justify-content: center; */
-    align-items: center;
-    height: 50vh;
+.postbox a {
+    color: #d8616b;
 }
 
-.essay {
-    resize: none;
-    width: 95%;
-    height: 80%;
-    white-space: pre-wrap;
-    /* background-color: green; */
+.postbox a:visited {
+    color: #d8616b;
 }
 
-.sub {
-    margin-top: 2em;
+.postbox h2 {
+    margin: 1em 0 0 0;
 }
+

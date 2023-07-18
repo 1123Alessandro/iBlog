@@ -11,7 +11,7 @@
 <html>
 	<head>
 		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-		<title>JSP Page</title>
+		<title>iBlog</title>
         <link rel="stylesheet" href="styles/landing.css">
 	</head>
 	<body>
@@ -30,16 +30,17 @@
         <!-- TODO: Make navbar -->
 
         <div class="navbar">
-            <a href="Landing">Home</a>
-            <a href="Profile?uname=<%= request.getSession().getAttribute("uname") %>">My Profile</a>
+            <a id="home" href="Landing">Home</a>
+            <a id="profile" href="Profile?uname=<%= request.getSession().getAttribute("uname") %>">My Profile</a>
         </div>
 
-
-        <h1>Trending Now</h1>
+        <h1 class="title">Recent Posts</h1>
         <!-- <a href="Landing?query=mine">My Posts</a> | <a href="Landing?query=comms">My Comments</a> -->
-		<form action="Publish" method="POST">
-			<button type="submit">Write Post</button>
-		</form>
+        <div class="tabs">
+            <form action="Publish" method="POST">
+                <button type="submit">Write New Post</button>
+            </form>
+        </div>
 
 		<%
 		ResultSet posts = (ResultSet) request.getAttribute("posts");
