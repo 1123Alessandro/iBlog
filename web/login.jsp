@@ -9,7 +9,8 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
+        <title>Login</title>
+        <link rel="stylesheet" href="styles/login.css">
     </head>
     <body>
         <h1>Login Page!</h1>
@@ -22,8 +23,14 @@
         %>
         <form action="Login" method="POST">
             <input type="hidden" name="login" value="true">
-            <input type="text" name="uname">
-            <input type="password" name="pass">
+            <div>
+                <label for="uname">Username:</label>
+                <input type="text" name="uname">
+            </div>
+            <div>
+                <label for="pass">Password:</label>
+                <input type="password" name="pass">
+            </div>
             <button type='submit'>Submit</button>
         </form>
     </body>

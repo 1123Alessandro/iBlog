@@ -65,21 +65,21 @@
             <p><%= count %> Upvotes</p>
         </div>
 
-        <div class="comments">
-            <h3><%= request.getAttribute("commentCount") %> Comments</h3>
-            <!-- <p><%= request.getAttribute("commentCount") %></p> -->
-        </div>
         <form class="commentbox" action="Critique" method="POST">
             <input type="hidden" name="postid" value="<%= rs.getString("POST_ID") %>">
             <textarea name="text">Type Comment</textarea>
             <button type="submit">Post Comment</button>
         </form>
+        <div class="comments">
+            <h3><%= request.getAttribute("commentCount") %> Comments</h3>
+            <!-- <p><%= request.getAttribute("commentCount") %></p> -->
+        </div>
         <%
         ResultSet comments = (ResultSet) request.getAttribute("comments");
         while (comments.next()) {
         String commenter = comments.getString("ACC_UNAME");
         %>
-        <div class="comments">
+        <div class="comments coms">
             <h4><%= commenter %></h4>
             <p><%= comments.getDate("COM_DATE") %></p>
             <p><%= comments.getString("COM_TEXT").replace("\n", "<br>") %></p>

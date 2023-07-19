@@ -64,3 +64,23 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     margin: 1em 0 0 0;
 }
 
+.guest {
+    text-align: center;
+    font-size: 4rem;
+}
+
+.login {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login button {
+    background-color: #c8c3a6;
+    color: #191922;
+    width: 8vw;
+    border: 0;
+    border-radius: 2rem;
+    margin: 1vh;
+    padding: 1vh;
+}

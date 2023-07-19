@@ -31,14 +31,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     margin-right: 2vw;
 }
 
+h1 {
+    margin: 2vw;
+}
+
 .title {
     width: 100%;
     font-size: 5em;
     text-align: center;
-    /* color: red; */
-    /* color: green; */
     border: 0;
-    /* border-bottom: 0.5vh solid black; */
 }
 
 .title:focus {
@@ -55,7 +56,18 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     height: 50vh;
 }
 
+.espan button {
+    background-color: #c8c3a6;
+    color: #191922;
+    width: 8vw;
+    border: 0;
+    border-radius: 2rem;
+    margin: 1vh;
+    padding: 1vh;
+}
+
 .essay {
+    padding: 1vw;
     resize: none;
     width: 95%;
     height: 80%;

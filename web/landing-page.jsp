@@ -19,8 +19,8 @@
         String uname = (String) session.getAttribute("uname");
         if (uname == null) {
         %>
-        <h1>Welcome Guest</h1>
-        <form action="Login" method="GET">
+        <h1 class="guest">Welcome Guest</h1>
+        <form class="login" action="Login" method="GET">
             <button type="submit">Login</button>
         </form>
         <%

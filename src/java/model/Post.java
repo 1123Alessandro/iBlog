@@ -17,6 +17,8 @@ public class Post {
 	}
 
 	public static void publishPost(Connection conn, String title, String text, String uname) throws SQLException {
+        if (title.length() == 0 || text.length() == 0)
+            throw new SQLException();
         String query = "INSERT INTO post (POST_TITLE, POST_DATE, POST_TEXT, ACC_UNAME) VALUES (?, NOW(), ?, ?)";
         PreparedStatement ps = conn.prepareStatement(query);
         ps.setString(1, title);

@@ -106,6 +106,7 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
 }
 
 .commentbox textarea {
+    padding: 1vw;
     resize: none;
     width: 40%;
     height: 80%;
@@ -119,4 +120,11 @@ Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/CascadeStyleSheet.css
     border-radius: 2rem;
     margin: 1vh;
     padding: 1vh;
+}
+
+.coms {
+    margin: 1vw;
+    background-color: #ebebeb;
+    border-radius: 1rem;
+    padding: 1vw;
 }
